@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import GameHacker
 
-print("Iniciando o robo")
+print("Iniciando o robo...")
 
 driver = webdriver.Chrome('C:/Users/vitor/OneDrive/Área de Trabalho/Robos/chromedriver')
 driver.get("https://stopots.com.br/")
@@ -32,5 +33,11 @@ for i in newTemas:
     inputTemas.clear()
 
 driver.find_element_by_class_name("icon-exclamation").send_keys(Keys.RETURN)
-
+time.sleep(10)
+link = driver.find_element_by_xpath('//*[@id="popup"]/div/h3').text
+link = link[5:10]
+print(link)
+GameHacker.hack("https://stopots.com.br/{0}".format(link))
+time.sleep(5)
+driver.close()
 
