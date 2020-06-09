@@ -4,7 +4,7 @@ Made in python using Selenium webdriver
 
 ## How it Works?
 
-The program is now fragmented in 3 different archives:
+The program is now fragmented in 3 different files:
 
 GameCreator.py - This one effectively creates the game on the site (https://stopots.com.br/), going with some pre-defined categories
 
