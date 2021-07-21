@@ -15,8 +15,8 @@ GameHacker.py - This one is made to read the letter defined by the game and the 
 
 ## Problems for now
 
-The program is still too instable as of time, and the reason for that is, I used the library Time to settle the entire thing, so if someone delay some step too much during the game, the program might break
+The program is still too instable as of time, and the reason for that is, I used the library Time to set the entire thing, so if someone delay some step too much during the game, the program might break
 
-I don't know yet if i will continue with the Google.py thing, because I want to implement a database to the program, but I don't really know how to do it yet
+I don't know yet if I´ll continue with the Google.py thing, because I want to implement a database to the program, but I don't really know how to do it yet
 
 In case I implement a Database, I would want some way to construct it faster, because going from letter to letter in each cattegory would take a lot of time
