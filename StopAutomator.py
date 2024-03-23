@@ -17,7 +17,7 @@ def hack_game_wrapper():
         print("Create a game first")
         return
     else:
-        hack_game(link, driver)
+        hack_game(driver)
     pass
 
 link = None
