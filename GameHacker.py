@@ -5,7 +5,7 @@ import time
 
 
 def hack_game(link, driver):
-    print("Iniciando o hack")
+    print("Starting Hacker! Sit back and relax for a while")
     try:
         letra = driver.find_element(By.ID, "letter").text
         if letra == "?":
