@@ -1,43 +1,48 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 import time
 import GameHacker
 
-print("Iniciando o robo...")
+def create():   
+    print("Iniciando o robo...")
 
-driver = webdriver.Chrome('C:/Users/vitor/OneDrive/Área de Trabalho/Robos/chromedriver')
-driver.get("https://stopots.com.br/")
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
+    driver = webdriver.Chrome(options=options)
+    driver.get("https://stopots.com.br/")
+
+    time.sleep(3)
 
 
-driver.find_element_by_class_name("enter").send_keys(Keys.RETURN)
+    driver.find_element(By.CLASS_NAME, "enter").click()
 
-time.sleep(3)
+    time.sleep(3)
 
-driver.find_element_by_tag_name("input").clear()
-driver.find_element_by_tag_name("input").send_keys("Paulinho")
-driver.find_elements_by_class_name("icon-gear")[0].send_keys(Keys.RETURN)
+    driver.find_element(By.TAG_NAME, "input").clear()
+    driver.find_element(By.TAG_NAME, "input").send_keys("Paulinho")
+    driver.find_element(By.CLASS_NAME, "icon-gear").click()
 
-time.sleep(1)
-oldTemas = driver.find_elements_by_class_name("del")
+    time.sleep(1)
+    oldTemas = driver.find_elements(By.CLASS_NAME, "del")
 
-for i in oldTemas:
-    i.send_keys(Keys.RETURN)
+    for i in oldTemas:
+        i.send_keys(Keys.RETURN)
 
-newTemas=["Cor","CEP","Nome","Anime/Desenho","Serie/Filme","Animal","Super Poder","Personagem Ficticio", "Marca","Teste3","Teste2","Teste1"]
+    newTemas=["Cor","CEP","Nome","Anime/Desenho","Serie/Filme","Animal","Super Poder","Personagem Ficticio", "Marca","Teste3","Teste2","Teste1"]
 
-inputTemas = driver.find_element_by_name("themeAdd")
+    inputTemas = driver.find_element(By.NAME,"themeAdd")
 
-for i in newTemas:
-    inputTemas.send_keys(i)
-    inputTemas.send_keys(Keys.RETURN)
-    inputTemas.clear()
+    for i in newTemas:
+        inputTemas.send_keys(i)
+        inputTemas.send_keys(Keys.RETURN)
+        inputTemas.clear()
 
-driver.find_element_by_class_name("icon-exclamation").send_keys(Keys.RETURN)
-time.sleep(10)
-link = driver.find_element_by_xpath('//*[@id="popup"]/div/h3').text
-link = link[5:10]
-print(link)
-GameHacker.hack("https://stopots.com.br/{0}".format(link))
-time.sleep(5)
-driver.close()
+    driver.find_element(By.CLASS_NAME,"icon-exclamation").click()
+    time.sleep(10)
+    link = driver.find_element(By.CLASS_NAME, 'PopShare').text
+    link = link[5:10]
+    return(link)
+
 

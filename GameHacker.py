@@ -6,7 +6,7 @@ import time
 def hack(Link):       
     print("Iniciando o robo")
 
-    driver = webdriver.Chrome('C:/Users/vitor/OneDrive/Área de Trabalho/Robos/chromedriver')
+    driver = webdriver.Chrome('chromedriver.exe')
     driver.get(Link)
 
     driver.find_element_by_class_name("enter").send_keys(Keys.RETURN)
