@@ -17,7 +17,7 @@ def pesquisaTemas(Lista, Letra):
         
 
 
-pesquisaTemas(["Banana","Macarrao","Linguica"], "a")
+
 
 
 
