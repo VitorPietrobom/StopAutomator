@@ -1,8 +1,7 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from OpenAPIUsing import get_words_from_gpt
-import time
+import ast
 
 
 def hack_game(driver):
@@ -23,7 +22,15 @@ def hack_game(driver):
 
         words = get_words_from_gpt(letra, temas)
 
+        words = ast.literal_eval(words)
         print(words)
+
+        input_boxes = driver.find_elements(By.TAG_NAME, "input")
+
+        for box in input_boxes:
+            box.send_keys(words.pop(0))
+                
+
         return 0
     except Exception as e:
         print("An Error ocurred! Make sure your at the point where a letter is defined and the round has began! Error:", e)
