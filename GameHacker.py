@@ -28,6 +28,8 @@ def hack_game(driver):
         input_boxes = driver.find_elements(By.TAG_NAME, "input")
 
         for box in input_boxes:
+            if words == []:
+                break
             box.send_keys(words.pop(0))
                 
 
