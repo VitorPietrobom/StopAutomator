@@ -1,36 +1,39 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
-import Google
+from selenium.webdriver.common.by import By
+from OpenAPIUsing import get_words_from_gpt
+import ast
 
 
-print("Iniciando o robo")
+def hack_game(driver):
+    print("Starting Hacker! Sit back and relax for a while")
+    try:
+        letra = driver.find_element(By.ID, "letter").text
+        if letra == "?":
+            exit(1)
+        print(letra)
 
-driver = webdriver.Chrome('C:/Users/vitor/OneDrive/Área de Trabalho/Robos/chromedriver')
-link = "https://" + input("Link do jogo: ")
-driver.get(link)
+        temasRaw = driver.find_elements(By.TAG_NAME, "span")
 
-driver.find_element_by_class_name("enter").send_keys(Keys.RETURN)
-time.sleep(2)
-driver.find_element_by_tag_name("input").clear()
-driver.find_element_by_tag_name("input").send_keys("SrPaulinho")
-driver.find_element_by_class_name("icon-exclamation").send_keys(Keys.RETURN)
+        temas = []
+        for i in temasRaw[3:]:
+            temas.append(i.text)
 
+        print(temas)
 
-time.sleep(20)
+        words = get_words_from_gpt(letra, temas)
 
-letra = driver.find_element_by_id("letter").text[6]
-print(letra)
+        words = ast.literal_eval(words)
+        print(words)
 
-newTemas=["COR","CEP","NOME","ANIME/DESENHO","SERIE/FILME","ANIMAL","SUPER PODER","PERSONAGEM FICTICIO", "MARCA","TESTE3","TESTE2","TESTE1"]
+        input_boxes = driver.find_elements(By.TAG_NAME, "input")
 
-temasRaw = driver.find_elements_by_tag_name("span")
-temas = []
-for i in temasRaw:
-    if(i.text in newTemas):
-        temas.append(i.text)
+        for box in input_boxes:
+            box.send_keys(words.pop(0))
+                
 
-
-print(temas)
+        return 0
+    except Exception as e:
+        print("An Error ocurred! Make sure your at the point where a letter is defined and the round has began! Error:", e)
+        return 1
 
 
