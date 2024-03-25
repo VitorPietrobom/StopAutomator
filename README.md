@@ -6,6 +6,7 @@ Made in Python using Selenium webdriver and the OpenAI API, Stop Automator is a 
 
 The program is divided into four different files:
 
+
 - **StopAutomator.py**: This serves as the main file of the program, creating the GUI and coordinating the functionalities of the other files.
   
 - **GameCreator.py**: Responsible for creating the game on the site [Stopots](https://stopots.com.br/), it allows for predefined categories that can be modified.
@@ -21,3 +22,4 @@ The program is divided into four different files:
 - Implement a feature to input only a single category, offering more flexibility to users.
   
 - Strengthen the category fetching mechanism to make it more robust and secure, addressing potential bugs within the program.
+
